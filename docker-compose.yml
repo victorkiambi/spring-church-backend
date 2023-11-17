@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  app:
+    image: church-service:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+        - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/church
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=validate
+      - SPRING_JPA_SHOW_SQL=true
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
+  db:
+    image: mysql:8.0.22
+    ports:
+      - "3306:3306"
+    environment:
+        - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+        - MYSQL_DATABASE=church
+        - MYSQL_USER=root
+
+    volumes:
+        - db-data:/var/lib/mysql
+volumes:
+    db-data:
