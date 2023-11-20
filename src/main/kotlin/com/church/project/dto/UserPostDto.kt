@@ -1,9 +1,9 @@
 package com.church.project.dto
 
-import com.church.project.models.Post
+import com.church.project.models.UserPost
 import java.time.LocalDateTime
 
-data class PostDto(
+data class UserPostDto(
     val id: Long?,
     val title: String,
     val content: String,
@@ -11,9 +11,10 @@ data class PostDto(
     val updatedAt: LocalDateTime?,
     val deletedAt: String?,
     val userId: Long?,
+    val comments: List<CommentDto> = emptyList(),
     val user: UserDto?,
-    ){
-    fun toEntity() = Post(
+){
+    fun toEntity() = UserPost(
         id = id,
         title = title,
         content = content,

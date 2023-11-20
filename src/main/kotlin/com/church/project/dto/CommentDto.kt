@@ -9,7 +9,7 @@ data class CommentDto(
     val createdAt: LocalDateTime?,
     val updatedAt: LocalDateTime?,
     val user: UserDto? = null,
-    val post: PostDto? = null,
+    val post: UserPostDto? = null,
     val isDeleted: Boolean?,
     val deletedAt: LocalDateTime?,
     val userId: Long,

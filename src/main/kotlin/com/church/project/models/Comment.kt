@@ -25,7 +25,7 @@ class Comment(
     @ManyToOne
     @JoinColumn(name = "postId", insertable = false, updatable = false)
     @JsonBackReference
-    val post: Post?,
+    val post: UserPost?,
 ){
     override fun toString(): String {
         return "Comment(id=$id, comments='$comments', createdAt=$createdAt, updatedAt=$updatedAt, deletedAt=$deletedAt, isDeleted=$isDeleted)"
